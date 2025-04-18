@@ -27,3 +27,7 @@ function App() {
 }
  
 export default App;
+
+
+
+// to learn about react redux implementation refer .md file for it
