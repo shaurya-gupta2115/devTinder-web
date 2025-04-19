@@ -37,9 +37,14 @@ import { BASE_URL } from "../utils/constants";
 //   );
 // };
 const Login = () => {
+
+  // states
   const [email, setEmail] = useState("shaurya@gmail.com");
   const [password, setPassword] = useState("Shaurya@123");
+  const [error, setError] = useState("")
 
+
+  //functions 
   const dispatch = useDispatch()
   const navigate = useNavigate()
     
@@ -64,6 +69,7 @@ const Login = () => {
       return navigate("/") //jaise hi handle login me click krega to wo data hai sanskriti wala wo recheck honga and then feed page me navigarte ho jaega ... verify hote haiii isliye wo wala navigation wala last me likha hai 
       
     } catch (err) {
+      setError("Invalid Credentials :(");
       console.error(err);
     }
   };
@@ -97,6 +103,7 @@ const Login = () => {
           />
           <p className="fieldset-label">Required</p>
         </fieldset>
+        <p className="text-shadow-amber-500 text-red-400 font-bold text-sm mt-2 mx-2">{error} </p>
         <div className="card-actions mt-4 flex justify-center">
           <button className="btn btn-primary w-full" onClick={handleLogin}>
             Login
