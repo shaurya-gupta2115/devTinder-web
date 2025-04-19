@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar shadow-sm px-10 bg-amber-600 mb-5">
+      <div className="navbar shadow-sm px-10 bg-radial-[at_90%_80%] from-amber-900 to-zinc-900 to-65% mb-5">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">DevTinder</a>
         </div>

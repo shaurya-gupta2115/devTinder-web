@@ -18,7 +18,7 @@ const Login = () => {
         emailId,
         password,
       });
-      console.log(res)
+      // console.log(res)
     } catch (err) {
       console.error(err);
     }

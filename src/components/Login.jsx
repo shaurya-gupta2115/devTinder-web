@@ -64,7 +64,7 @@ const Login = () => {
         }
       );
       // i have to pass this credentials otherwise the cookies which are to ve passsed will not get into other api calls or other routes
-      console.log(res.data);
+      // console.log(res.data);
       dispatch(addUser(res.data)); //dispatch this data ..to action of adding user using addUser data
       return navigate("/") //jaise hi handle login me click krega to wo data hai sanskriti wala wo recheck honga and then feed page me navigarte ho jaega ... verify hote haiii isliye wo wala navigation wala last me likha hai 
       
