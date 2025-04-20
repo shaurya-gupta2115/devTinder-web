@@ -12,9 +12,9 @@ const EditProfile = ({ user }) => {
   const [age, setAge] = useState(user.age);
   const [about, setAbout] = useState(user.about);
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
-  // const [update , setUpdate] = useState("Update Profile")
+  const [update, setUpdate] = useState("Update Profile");
   const [error, setError] = useState("");
-  const [saved, setSaved] = useState(false)
+  const [saved, setSaved] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -24,9 +24,7 @@ const EditProfile = ({ user }) => {
   // her ethe edit profile is mounted successfully --> it was just a minor check
 
   const saveProfile = async () => {
-
     try {
-
       const res = await axios.patch(
         BASE_URL + "/profile/edit",
         {
@@ -39,21 +37,25 @@ const EditProfile = ({ user }) => {
           about,
         },
         { withCredentials: true }
-
       );
       dispatch(addUser(res?.data?.data));
 
       //clear the existing error if they are present and corrected
-      setError("")
+      setError("");
 
       // setUpdate("Updated!");
       // setTimeout(() => setUpdate("Update Profile"), 2000);
 
-      setSaved(true)
+      setSaved(true);
       setInterval(() => {
-        setSaved(false)
+        setSaved(false);
       }, 3000);
 
+      setUpdate("Updated");
+      setInterval(() => {
+        setUpdate("Update Profile");
+      }, 3000);
+      
 
     } catch (err) {
       setError(err.response.data);
@@ -159,11 +161,13 @@ const EditProfile = ({ user }) => {
               {error}{" "}
             </p>
 
-            <button
-              onClick={saveProfile}
-              className="border-2 border-amber-400 bg-amber-300 hover:bg-amber-400 hover:scale-105 active:scale-100 transition-all duration-300 ease-in-out text-black text-xl font-bold rounded-full px-3 py-1 my-4 shadow-md hover:shadow-lg">
-              {/* {update} */}Update Profile
-            </button>
+            {update && (
+              <button
+                onClick={saveProfile}
+                className="border-2 border-amber-400 bg-amber-300 hover:bg-amber-400 hover:scale-105 active:scale-100 transition-all duration-300 ease-in-out text-black text-xl font-bold rounded-full px-3 py-1 my-4 shadow-md hover:shadow-lg">
+                {update}
+              </button>
+            )}
 
             {/* testing whether button component is working or not  */}
             {/* <button onClick={() => console.log("Hello clicked!")}>
