@@ -14,6 +14,7 @@ const EditProfile = ({ user }) => {
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
   // const [update , setUpdate] = useState("Update Profile")
   const [error, setError] = useState("");
+  const [saved, setSaved] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -47,6 +48,13 @@ const EditProfile = ({ user }) => {
 
       // setUpdate("Updated!");
       // setTimeout(() => setUpdate("Update Profile"), 2000);
+
+      setSaved(true)
+      setInterval(() => {
+        setSaved(false)
+      }, 3000);
+
+
     } catch (err) {
       setError(err.response.data);
     }
@@ -88,7 +96,7 @@ const EditProfile = ({ user }) => {
               />
               <p className="fieldset-label"></p>
             </fieldset>
- 
+
             {/* gender */}
             <fieldset className="fieldset mx-2 mt-4">
               <legend className="fieldset-legend">Gender</legend>
@@ -146,12 +154,10 @@ const EditProfile = ({ user }) => {
               <p className="fieldset-label"></p>
             </fieldset>
 
-
             {/* error message  */}
             <p className="text-shadow-amber-500 text-red-400 font-bold text-sm mt-2 mx-2">
               {error}{" "}
             </p>
-
 
             <button
               onClick={saveProfile}
@@ -163,7 +169,6 @@ const EditProfile = ({ user }) => {
             {/* <button onClick={() => console.log("Hello clicked!")}>
               Click test
             </button> */}
-
           </div>
         </div>
         {/* Here we have to send updated value every time and whenever the user changes its value that value is passed on this component and when it is set then the final output can be seen by saving  */}
@@ -172,13 +177,32 @@ const EditProfile = ({ user }) => {
             firstName,
             lastName,
             photoUrl,
-        
+
             skills: user.skills,
             gender,
             age,
             about,
           }}
         />
+        {saved && (
+          <div className="toast toast-end toast-top z-50">
+            <div className="alert alert-success shadow-lg animate-fade-in ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current flex-shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"
+                />
+              </svg>
+              <span>Profile Saved successfully!</span>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
