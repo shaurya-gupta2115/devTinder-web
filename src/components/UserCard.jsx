@@ -16,9 +16,9 @@ const UserCard = ({ user }) => {
   return (
     <>
       <div className="flex justify-center">
-        <div className="card bg-emerald-950 w-96 shadow-sm">
+        <div className="card bg-emerald-950 w-96 shadow-sm gap-1">
           <figure>
-            <img src={user.photoUrl} alt="Shoes" />
+            <img src={user.photoUrl} alt="photoUrl" />
           </figure>
           <div className="card-body h-70">
             <h2 className="card-title">
@@ -44,6 +44,7 @@ const UserCard = ({ user }) => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };
