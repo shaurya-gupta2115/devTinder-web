@@ -8,6 +8,7 @@ import appStore from "./utils/appStore";
 import Feed from "./components/Feed";
 import EditProfile from "./components/EditProfile";
 import Connections from "./components/Connections";
+import Request from "./components/Request";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/user/connections" element={<Connections />} />
+              <Route path="/user/requests/received" element={<Request />} />
             </Route>
           </Routes>
         </BrowserRouter>
@@ -28,9 +30,7 @@ function App() {
     </>
   );
 }
- 
+
 export default App;
-
-
 
 // to learn about react redux implementation refer .md file for it

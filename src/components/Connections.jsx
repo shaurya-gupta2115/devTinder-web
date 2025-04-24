@@ -31,31 +31,39 @@ const Connections = () => {
 
   return (
     <div className="mt-5 flex flex-col items-center">
-      <h1 className="text-3xl font-extrabold tracking-widest mb-4 underline text-white text-center">Connections</h1>
+      <h1 className="text-3xl font-extrabold tracking-wide mb-4 underline text-white text-center">
+        Connections
+      </h1>
       {!connections ? (
+        <p className="text-gray-500 text-lg">Loading Connections...</p>
+      ) : connections.length === 0 ? (
         <p className="text-gray-500 text-lg">No Connections Found 😕</p>
       ) : (
-        <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 w-full h-3/6 px-10">
-          {/* You can render your connection cards here */}
+        <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 w-4/5 h-3/6 px-10">
           {connections.map((connection) => {
-
-            const {firstName, lastName, photoUrl, age, gender, about} = connection;
-
+            const {
+              firstName,
+              lastName,
+              photoUrl,
+              age,
+              gender,
+              about,
+              skills,
+            } = connection;
             return (
               <div
                 key={connection._id}
-                className="p-4 border m-3 text-center mt-4 rounded-2xl shadow-2xl ">
+                className="p-4 border m-3 text-center mt-4 rounded-2xl shadow-2xl">
                 <img
-                  src={connection.photoUrl}
+                  src={photoUrl}
                   alt="photo"
-                  className="transition-transform duration-300 ease-in-out transform hover:scale-[1.01] overflow-auto mx-auto w-60 h-60 object-cover "
+                  className="transition-transform duration-300 ease-in-out transform hover:scale-[1.01] overflow-auto mx-auto w-60 h-60 object-cover"
                 />
                 <p className="font-bold my-2 text-yellow-300">
-                  {connection.firstName} {connection.lastName}
+                  {firstName} {lastName}
                 </p>
-                <p className="text-sm text-gray-600">
-                  {connection.skills.join(", ")}
-                </p>
+                <p className="text-sm text-gray-600">{skills?.join(", ")}</p>
+                <p>{age}, {gender}</p>
                 <p className="text-[14px]">About: {about}</p>
               </div>
             );
