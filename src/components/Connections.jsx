@@ -4,7 +4,7 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
 
-const Connections =  () => {
+const Connections = () => {
   const dispatch = useDispatch();
 
   const connections = useSelector((store) => store.connections);
@@ -29,26 +29,41 @@ const Connections =  () => {
     fetchConnections();
   }, []); // its missing dependency because we just want to have one call after the page load
 
-return (
-  <div className="mt-5 flex flex-col items-center">
-    <h1 className="text-3xl font-bold mb-4">Connections</h1>
-    {!connections ? (
-      <p className="text-gray-500 text-lg">No Connections Found 😕</p>
-    ) : (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {/* You can render your connection cards here */}
-        {connections.map((conn) => (
-          <div key={conn._id} className="p-4 border rounded shadow">
-            <p className="font-semibold">
-              {conn.firstName} {conn.lastName}
-            </p>
-            <p className="text-sm text-gray-600">{conn.skills.join(", ")}</p>
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
-);
+  return (
+    <div className="mt-5 flex flex-col items-center">
+      <h1 className="text-3xl font-extrabold tracking-widest mb-4 underline text-white text-center">Connections</h1>
+      {!connections ? (
+        <p className="text-gray-500 text-lg">No Connections Found 😕</p>
+      ) : (
+        <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 w-full h-3/6 px-10">
+          {/* You can render your connection cards here */}
+          {connections.map((connection) => {
+
+            const {firstName, lastName, photoUrl, age, gender, about} = connection;
+
+            return (
+              <div
+                key={connection._id}
+                className="p-4 border m-3 text-center mt-4 rounded-2xl shadow-2xl ">
+                <img
+                  src={connection.photoUrl}
+                  alt="photo"
+                  className="transition-transform duration-300 ease-in-out transform hover:scale-[1.01] overflow-auto mx-auto w-60 h-60 object-cover "
+                />
+                <p className="font-bold my-2 text-yellow-300">
+                  {connection.firstName} {connection.lastName}
+                </p>
+                <p className="text-sm text-gray-600">
+                  {connection.skills.join(", ")}
+                </p>
+                <p className="text-[14px]">About: {about}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Connections;
