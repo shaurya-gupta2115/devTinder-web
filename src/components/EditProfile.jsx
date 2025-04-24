@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import UserCard from "./UserCard";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
@@ -55,8 +55,6 @@ const EditProfile = ({ user }) => {
       setInterval(() => {
         setUpdate("Update Profile");
       }, 3000);
-      
-
     } catch (err) {
       setError(err.response.data);
     }

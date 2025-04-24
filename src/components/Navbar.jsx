@@ -36,7 +36,7 @@ const Navbar = () => {
     <>
       <div className="navbar shadow-sm px-10 bg-radial-[at_90%_80%] from-amber-900 to-zinc-900 to-65% mb-5">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">DevTinder</a>
+          <Link to="/" className="btn btn-ghost text-xl">DevTinder</Link>
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
@@ -94,6 +94,12 @@ const Navbar = () => {
                   <Link to="/profile" className="justify-between">
                     Profile
                     <span className="badge">New</span>
+                  </Link>
+                </li>    
+                <li>
+                  <Link to="/user/connections" className="justify-between">
+                    Connections
+                    <span className="badge">🔥</span>
                   </Link>
                 </li>
                 <li>
