@@ -31,7 +31,7 @@ const EditProfile = ({ user }) => {
           firstName,
           lastName,
           photoUrl,
-          skills: user.skills,
+          skills: user.skills || [],
           gender,
           age,
           about,

@@ -28,15 +28,23 @@ const Feed = () => {
   console.log(feed);
 
   useEffect(() => {
-    getFeed(); //or say if(!feed) return ; in the getFeed section
+    getFeed(); //or say if(!feed) return ; in the getFeed section // ye walaa jaise hi ek baar rrun krega ...call jaegi getFeed ko ..if pehle se feed hogi to to show krdega agar feed nhi hogi to fetch krega feed ko 
   }, []);
 
+  if(!feed) return;
+
+  if(feed.length <=0) return <h1>Your Feed is empty</h1>
+
   return (
-    feed && (
-      <div>
-        <UserCard user={feed[0]} />
-      </div>
-    )
+    <>
+      {feed ? (
+        <div>
+          <UserCard user={feed[0]} />
+        </div>
+      ) : (
+        <div className="text-center font-extrabold text-3xl">No more feed</div>
+      )}
+    </>
   );
 };
 

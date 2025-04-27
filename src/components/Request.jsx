@@ -28,7 +28,7 @@ const Request = () => {
       const res = await axios.get(BASE_URL + "/user/requests/received", {
         withCredentials: true,
       });
-      dispatch(addRequests(res.data.data));
+      dispatch(addRequests(res.data.data)); //request ke store me add ho jaengi jo bhi recieved hui hai 
       console.log(res.data.data);
     } catch (err) {
       console.error(err);
@@ -72,9 +72,9 @@ const Request = () => {
                 </p>
                 <p className="text-[14px]">About: {about}</p>
                 <div className="flex gap-10 justify-center m-4 flex-wrap">
-                  //hum yaha pr request ki id denge naaki jo destructure kri hai
+                  {/* hum yaha pr request ki id denge naaki jo destructure kri hai
                   id wo wali ...because request._id se hi wo accept krega
-                  request
+                  request */}
                   <button
                     className="btn btn-success"
                     onClick={() => reviewRequest("accepted", request._id)}>
