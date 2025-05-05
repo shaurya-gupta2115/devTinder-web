@@ -33,7 +33,7 @@ const Feed = () => {
 
   if(!feed) return;
 
-  if(feed.length <=0) return <h1>Your Feed is empty</h1>
+  if(feed.length <=0) return <h1 className="font-bold text-2xl text-center flex justify-center items-center">Your Feed is empty</h1>
 
   return (
     <>

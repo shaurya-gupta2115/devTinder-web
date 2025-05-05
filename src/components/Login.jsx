@@ -74,6 +74,8 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="card w-96 shadow-sm p-6 bg-base-100">
+        <div className="text-3xl font-extrabold text-center underline">Login</div>
+
         <fieldset className="fieldset mx-2">
           <legend className="fieldset-legend">Email ID : {password}</legend>
           <input
